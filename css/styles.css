@@ -99,8 +99,8 @@ select {
 
 #search {
     border-right: 1px solid #ddd;
-    padding-right: 0.9rem;
-    margin-right: 0.9rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
     width: 65%;
     display:flex;
     flex-direction: column;
@@ -115,4 +115,42 @@ select {
 #search input {
     width: 100%;
     margin-right: 0.3rem;
+}
+
+#filter {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+}
+
+#filter select {
+    flex: 1;
+}
+
+.todo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+    transition: .3s;
+}
+
+.todo h3 {
+    flex: 1;
+    font-size: 0.9rem;
+}
+
+.todo button {
+    margin-left: 0.4rem;
+}
+
+.done {
+    background-color: #395169;
+}
+
+.done h3 {
+    color: #fdfdfd;
+    text-decoration: line-through;
+    font-style: italic;
 }
