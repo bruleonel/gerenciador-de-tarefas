@@ -6,7 +6,7 @@ const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const calcelEdit = document.querySelector("#cancel-edit");
 const calcelEditBtn = document.querySelector("#cancel-edit-btn");
-const pesquisarPorTitulo = document.querySelector("pesquisar")
+const filtrarPorTitulo = document.querySelector("pesquisar")
 
 let oldInputValue;
 
@@ -58,21 +58,6 @@ const updateTodo = (text) => {
             todoTitle.innerText = text;
         }
     }))
-}
-
-const search = (text) => {
-    const todos = document.querySelectorAll(".todo");
-
-    todos.forEach((todo => {
-        const todoTitle = todo.querySelector("h3").innerText.toLowerCase();
-
-        console.log(todoTitle);
-
-    }));
-};
-
-const shouwAllItems = () => {
-    
 }
 
 //Eventos:
@@ -131,13 +116,3 @@ editForm.addEventListener("submit", (e) => {
     toggleForms();
 });
 
-pesquisarPorTitulo.addEventListener("input", (text) => {
-    const str = this.value;
-    console.log(str);
-
-    if(str) {
-        filterData(str);
-    } else {
-        shouwAllItems();
-    }
-})
