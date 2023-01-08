@@ -6,13 +6,17 @@ const editForm = document.querySelector("#edit-form");
 const editInput = document.querySelector("#edit-input");
 const calcelEdit = document.querySelector("#cancel-edit");
 const calcelEditBtn = document.querySelector("#cancel-edit-btn");
-const filtrarPorTitulo = document.querySelector("pesquisar")
+const filtrarPorTitulo = document.querySelector("#search")
+const filtrarPorStatus = document.querySelector("#filter-select")
 
 let oldInputValue;
+
 
 //Funções:
 const saveTodo = (texto) => {
     const todo = document.createElement("div");
+    todo.classList.add("show");
+
     todo.classList.add("todo");
 
     const todoTitle = document.createElement("h3");
@@ -49,7 +53,7 @@ const toggleForms = () => {
 };
 
 const updateTodo = (text) => {
-    const todos = document.querySelectorAll(".todo");
+    const todos = document.querySelectorAll(".show");
 
     todos.forEach((todo => {
         let todoTitle = todo.querySelector("h3")
@@ -58,6 +62,46 @@ const updateTodo = (text) => {
             todoTitle.innerText = text;
         }
     }))
+};
+
+function selecionando() {
+    let select = document.querySelector("#filter-select");
+    let options = select.options[select.selectedIndex];
+    let value = options.value;
+
+    const todoListArray = Array.from(todoList.children);
+    
+    let listaExibir = todoListArray.filter((todo) => {
+        if(value === 'done') {   
+            return todo.classList.contains('done')
+        } else if(value ==='todo') {
+            return !todo.classList.contains('done')
+        } else {
+            return true;
+        }
+    });
+    
+    listaExibir.forEach(todo => {
+        todo.classList.add("show");
+        todo.classList.remove("hide");
+    });
+
+    let listaOcultar = todoListArray.filter((todo)  => { 
+        if(value === 'done'){
+            return !todo.classList.contains('done')
+        } else if (value === 'todo') {
+            return todo.classList.contains('done')
+        } else {
+            return false;
+        }
+    });
+    
+    listaOcultar.forEach(todo => {
+        todo.classList.remove("show");
+        todo.classList.add("hide")
+    })
+
+
 }
 
 //Eventos:
@@ -114,5 +158,21 @@ editForm.addEventListener("submit", (e) => {
     }
 
     toggleForms();
+});
+
+filtrarPorTitulo.addEventListener("input", event => {
+    const inputValuePesquisa = event.target.value.trim().toLowerCase();
+    Array.from(todoList.children)
+    .filter(todo => !todo.textContent.toLowerCase().includes(inputValuePesquisa))
+    .forEach(todo => {
+        todo.classList.remove("show");
+        todo.classList.add("hide")
+    })
+    Array.from(todoList.children)
+    .filter(todo => todo.textContent.toLowerCase().includes(inputValuePesquisa))
+    .forEach(todo => {
+        todo.classList.add("show");
+        todo.classList.remove("hide");
+    })
 });
 

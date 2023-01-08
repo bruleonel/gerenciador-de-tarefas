@@ -127,7 +127,7 @@ select {
     flex: 1;
 }
 
-.todo {
+.show {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -136,12 +136,12 @@ select {
     transition: .3s;
 }
 
-.todo h3 {
+.show h3 {
     flex: 1;
     font-size: 0.9rem;
 }
 
-.todo button {
+.show button {
     margin-left: 0.4rem;
 }
 

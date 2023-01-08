@@ -43,46 +43,20 @@
             <div id="search">
                 <h4>Pesquisar</h4>
                 <form>
-                    <input type="text" id="search-input" placeholder="Buscar">
-                    <button id="erasse-button">
-                        <i class="fa-solid fa-delete-left"></i>
-                    </button>
+                    <input type="text" id="search-input" placeholder="Digite o título" autofocus>
                 </form>
             </div>
             <div id="filter">
                 <h4>Filter</h4>
-                <select id="filter-select">
-                    <option value="all">Todas</option>
-                    <option value="done">Concluídas</option>
-                    <option value="todo">A fazer</option>
+                <select id="filter-select" onchange="selecionando()">
+                    <option value="all" class="t-all">Todas</option>
+                    <option value="done" class="t-done">Concluídas</option>
+                    <option value="todo" class="t-todo">A fazer</option>
                 </select>
             </div>
         </nav>
         <div class="todo-list" id="todo-list">
-            <div class="todo done">
-                <h3>Estudando HTML</h3>
-                <button class="finish-todo">
-                    <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="edit-todo">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button class="remove-todo">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="todo">
-                <h3>Estudando Js</h3>
-                <button class="finish-todo">
-                    <i class="fa-solid fa-check"></i>
-                </button>
-                <button class="edit-todo">
-                    <i class="fa-solid fa-pen"></i>
-                </button>
-                <button class="remove-todo">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
+            
         </div>
     </div>
 </body>
